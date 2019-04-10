@@ -11,9 +11,8 @@
 ##SerializationVersion           1.1.0.1    
 ###################################################################################
 
-
 #Mention Directory to Monitor
-$DIR_PATH="D:\temppp"
+$PATH="D:\temppp"
 
 #Apply Filters based on file extension
 $filter="*.txt"
@@ -26,17 +25,16 @@ $LastModifiedDate=get-date([datetime]$latest.LastWriteTime) -Format g
 $CurrentDate=get-date -Format g
 
 if($LastModifiedDate -lt $CurrentDate)
-{
-echo "New file found"
-echo $LastModifiedDate
-echo $CurrentDate
-$latest.FullName
-}
+  {
+    echo "Latest File Missing"
+    echo $LastModifiedDate
+    echo $CurrentDate
+    $latest.FullName
+  }
 else
-{
-echo "New File missing"
-echo $LastModifiedDate
-echo $CurrentDate
-$latest.FullName
-
-}
+  {
+    echo "Latest File present"
+    echo $LastModifiedDate
+    echo $CurrentDate
+    $latest.FullName
+  }
